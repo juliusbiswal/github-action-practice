@@ -29,7 +29,8 @@ jobs:
             # Ye sab jo code hai usko github pages mai dalne keliye usko Configure karna padta hai . Aur usi repository se ap pages ko host kar sakoge .
             - name: Setup Github Pages
               uses: actions/configure-pages@v4
-            
+              with:
+                enablement: true
             # Static code artifact . website per load na aye . ek website per image hai website khulte hi pic fatak se load ho jata hai . load na aye . 
             # Agar ap nginx use karte ho toh index.html file ko /var/www/html mai daldete ho . isi ko static files bolte hai . usi jaga ka ye github action wale log ek action banadiye hai .
             - name: upload static files
