@@ -5,9 +5,10 @@ on:
         branches: [main]
 
 permissions:
-    pages: write # TO deploy the code to github pages . 
-    id-token: write
-
+  contents: read
+  pages: write # TO deploy the code to github pages . 
+  id-token: write
+  
 jobs:
     deploy:
         runs-on: ubuntu-latest # This is the runner that will run the job . You will write for one time .
@@ -15,7 +16,7 @@ jobs:
             # Apko apki page ki url dekhni hai .
         environment:
             name: github-pages
-            url: ${{ steps.deploy-pages.outputs.page_url }}
+            url: ${{ steps.deployment.outputs.page_url }} 
 
         steps:
             # Get Access to your's PORTFOLIO CODE .
@@ -34,6 +35,5 @@ jobs:
             - name: upload static files
               uses: actions/upload-pages-artifact@v4
 
-            - name: Deploy to github pages
-              id: deploy-pages
+            - name: Deploy to github pages               
               uses: actions/deploy-pages@v4
