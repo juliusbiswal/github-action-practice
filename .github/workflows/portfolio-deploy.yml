@@ -20,7 +20,7 @@ jobs:
         steps:
             # Get Access to your's PORTFOLIO CODE .
             # Clones or checkout the code where this wrokflow is written .
-            # Jaha per code likha hua hai usi repository ko ye check karega . imp baat - usi repository ko ye check karega .
+            # Jaha per code likha hua hai usi repository ko ye check karega . imp baat - usi repository ko ye check karega 
             - name: checkout code
               uses: actions/checkout@v4
             
