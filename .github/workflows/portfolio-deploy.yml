@@ -32,7 +32,9 @@ jobs:
             # Static code artifact . website per load na aye . ek website per image hai website khulte hi pic fatak se load ho jata hai . load na aye . 
             # Agar ap nginx use karte ho toh index.html file ko /var/www/html mai daldete ho . isi ko static files bolte hai . usi jaga ka ye github action wale log ek action banadiye hai .
             - name: upload static files
-              uses: actions/upload-pages-artifact@v4
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: .
 
             - name: Deploy to github pages
               id: pages     
