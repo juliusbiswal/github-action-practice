@@ -4,7 +4,7 @@ name: Hello Workflow
 on:
   push:
     branches: [main]
-
+# This Paths are otherwise called as filters
     paths:
       - '**.html'
 # These are jobs inside the workflows
