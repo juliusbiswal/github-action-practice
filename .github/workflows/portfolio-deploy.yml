@@ -1,0 +1,39 @@
+name: Portfolio-Julius
+
+on:
+    push:
+        branches: [main]
+
+permissions:
+    pages: write # TO deploy the code to github pages . 
+    id-token: write
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest # This is the runner that will run the job . You will write for one time .
+
+            # Apko apki page ki url dekhni hai .
+        environment:
+            name: github-pages
+            url: ${{ steps.deploy-pages.outputs.page_url }}
+
+        steps:
+            # Get Access to your's PORTFOLIO CODE .
+            # Clones or checkout the code where this wrokflow is written .
+            # Jaha per code likha hua hai usi repository ko ye check karega . imp baat - usi repository ko ye check karega .
+            - name: checkout code
+              uses: actions/checkout@v4
+            
+            # Setup Github Pages . Jitne bhi pages hai usko static banna padta hai . matlab index.html , css , js , images etc . Ye sab static files hai . Ye sab chiz ko static artifact banate hai help of github pages se .
+            # Ye sab jo code hai usko github pages mai dalne keliye usko Configure karna padta hai . Aur usi repository se ap pages ko host kar sakoge .
+            - name: Setup Github Pages
+              uses: actions/configure-pages@v4
+            
+            # Static code artifact . website per load na aye . ek website per image hai website khulte hi pic fatak se load ho jata hai . load na aye . 
+            # Agar ap nginx use karte ho toh index.html file ko /var/www/html mai daldete ho . isi ko static files bolte hai . usi jaga ka ye github action wale log ek action banadiye hai .
+            - name: upload static files
+              uses: actions/upload-pages-artifact@v4
+
+            - name: Deploy to github pages
+              id: deploy-pages
+              uses: actions/deploy-pages@v4
